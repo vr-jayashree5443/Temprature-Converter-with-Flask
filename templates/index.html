@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #a{
+            padding-left: 760px;
+            
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        
+    </style>
+
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <form method="POST" action="/convert">
+        <label for="temperature">Enter Temperature:</label>
+        <input type="text" id="temperature" name="temperature" required>
+        <select name="convert_from">
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="celsius">Celsius</option>
+        </select>
+        <label for="convert_to">to</label>
+        <select name="convert_to">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    {% if temperature %}
+        <p id="a">{{ temperature }} {{ convert_from }} is equal to {{ result }} {{ result_unit }}</p>
+    {% endif %}
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
